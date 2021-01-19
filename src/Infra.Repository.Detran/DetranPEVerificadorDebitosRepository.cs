@@ -21,10 +21,22 @@ namespace DesignPatternSamples.Infra.Repository.Detran
             return Task.FromResult<IEnumerable<DebitoVeiculo>>(new List<DebitoVeiculo>() { new DebitoVeiculo() { DataOcorrencia = DateTime.UtcNow } });
         }
 
+        protected override Task<IEnumerable<DebitoCondutor>> PadronizarResultadoCondutor(string html)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override Task<string> RealizarAcesso(Veiculo veiculo)
         {
             Task.Delay(5000).Wait(); //Deixando o serviço mais lento para evidenciar o uso do CACHE.
             _Logger.LogDebug($"Consultando débitos do veículo placa {veiculo.Placa} para o estado de PE.");
+            return Task.FromResult("CONTEUDO DO SITE DO DETRAN/PE");
+        }
+
+        protected override Task<string> RealizarAcesso(Condutor condutor)
+        {
+            Task.Delay(5000).Wait(); //Deixando o serviço mais lento para evidenciar o uso do CACHE.
+            _Logger.LogDebug($"Consultando débitos do condutor nome {condutor.Nome} para o estado de PE.");
             return Task.FromResult("CONTEUDO DO SITE DO DETRAN/PE");
         }
     }

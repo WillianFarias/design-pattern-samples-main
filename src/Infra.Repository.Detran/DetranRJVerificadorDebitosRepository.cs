@@ -20,10 +20,20 @@ namespace DesignPatternSamples.Infra.Repository.Detran
             return Task.FromResult<IEnumerable<DebitoVeiculo>>(new List<DebitoVeiculo>() { new DebitoVeiculo() });
         }
 
+        protected override Task<IEnumerable<DebitoCondutor>> PadronizarResultadoCondutor(string html)
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected override Task<string> RealizarAcesso(Veiculo veiculo)
         {
             _Logger.LogDebug($"Consultando débitos do veículo placa {veiculo.Placa} para o estado de RJ.");
             return Task.FromResult("CONTEUDO DO SITE DO DETRAN/RJ");
+        }
+
+        protected override Task<string> RealizarAcesso(Condutor condutor)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

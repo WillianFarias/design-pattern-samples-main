@@ -9,7 +9,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DesignPatternSamples.WebAPI.Controllers.Detran
+
 {
+    [Route("api/Detran/[controller]")]
+    [ApiController]
     public class DebitoMotoristaController : ControllerBase
     {
         private readonly IMapper _Mapper;
@@ -31,7 +34,5 @@ namespace DesignPatternSamples.WebAPI.Controllers.Detran
             return Ok(result);
         }
     }
-
-
 }
 

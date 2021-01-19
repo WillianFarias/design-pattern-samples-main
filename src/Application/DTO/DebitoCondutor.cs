@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DesignPatternSamples.Application.DTO
 {
-    class DebitoCondutor
+    public class DebitoCondutor
     {
         public DateTime DataOcorrencia { get; set; }
         public string Descricao { get; set; }

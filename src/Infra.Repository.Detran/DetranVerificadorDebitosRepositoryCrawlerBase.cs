@@ -15,5 +15,14 @@ namespace DesignPatternSamples.Infra.Repository.Detran
 
         protected abstract Task<string> RealizarAcesso(Veiculo veiculo);
         protected abstract Task<IEnumerable<DebitoVeiculo>> PadronizarResultado(string html);
+
+        public async Task<IEnumerable<DebitoCondutor>> ConsultarDebitos(Condutor condutor)
+        {
+            var html = await RealizarAcesso(condutor);
+            return await PadronizarResultadoCondutor(html);
+        }
+
+        protected abstract Task<string> RealizarAcesso(Condutor condutor);
+        protected abstract Task<IEnumerable<DebitoCondutor>> PadronizarResultadoCondutor(string html);
     }
 }
